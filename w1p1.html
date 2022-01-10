@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Week 1, Project 1: Toggle Password Visibility</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css?v=8">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.css" rel="stylesheet" />
+	<link rel="icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>	
+	<p><a href="./index.html">Projects home</a></p>	
+	<h1>Week 1, Project 1: Toggle Password Visibility</h1>	
+	
+	<p>Enter your username and password to login.</p>
+	<form>
+		<div>
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username">
+		</div>
+	
+		<div>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password">
+		</div>
+	
+		<div>
+			<label for="show-password">
+				<input type="checkbox" name="show-passwords" id="show-password">
+				Show password
+			</label>
+		</div>
+	
+		<p>
+			<button type="submit">Log In</button>
+		</p>
+	</form>
+	
+	<hr>
+	<h3>Project JS</h3>
+	<pre><code id="view-js" class="hljs language-javascript"></code></pre>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script src="js/viewjs.js"></script>
+	<script src="js/w1p1.js"></script>
+	<script>
+		viewJS('js/w1p1.js');
+	</script>
+</body>
+</html>
+		
