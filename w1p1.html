@@ -26,15 +26,20 @@
 			<label for="from-units">Convert from:</label>
 
 			<select name="from-units" id="from-units">
-				<option value="g">grams</option>
+				<option value="">--Select a unit--</option>
+				<option value="pg">picograms</option>
+				<option value="ng">nanograms</option>
 				<option value="mcg">micrograms</option>
-				<option value="mg">milligrams</option>
-				<option value="cg">centigrams</option>
-    			<option value="dg">decigrams</option>
-				<option value="dag">decagrams</option>
-				<option value="hg">hectograms</option>
-    			<option value="kg">kilograms</option>
-    			<option value="t">tonnes</option>
+				<option value="mg">milligram</option>
+				<option value="cg">centigram</option>
+				<option value="dg">decigram</option>
+				<option value="g">gram</option>
+				<option value="dag">decagram</option>
+				<option value="hg">hectogram</option>
+				<option value="kg">kilogram</option>
+				<option value="t">tonne</option>
+				<option value="Mt">megatonne</option>
+				<option value="Gt">gigatonne</option>
 			</select>
 		</div>
 
@@ -42,16 +47,31 @@
 			<label for="to-units">Convert to:</label>
 
 			<select name="to-units" id="to-units">
-				<option value="g">grams</option>
+				<option value="">--Select a unit--</option>
+				<option value="pg">picograms</option>
+				<option value="ng">nanograms</option>
 				<option value="mcg">micrograms</option>
-				<option value="mg">milligrams</option>
-				<option value="cg">centigrams</option>
-    			<option value="dg">decigrams</option>
-				<option value="dag">decagrams</option>
-				<option value="hg">hectograms</option>
-    			<option value="kg">kilograms</option>
-    			<option value="t">tonnes</option>
+				<option value="mg">milligram</option>
+				<option value="cg">centigram</option>
+				<option value="dg">decigram</option>
+				<option value="g">gram</option>
+				<option value="dag">decagram</option>
+				<option value="hg">hectogram</option>
+				<option value="kg">kilogram</option>
+				<option value="t">tonne</option>
+				<option value="Mt">megatonne</option>
+				<option value="Gt">gigatonne</option>
 			</select>
+		</div>
+
+		<div>
+			<label for="show-units">Show Units:</label>
+			<input type="checkbox" id="show-units" name="show-units" checked>
+		</div>
+
+		<div>
+			<label for="abbr-units">Abbreviate Units (applies if Show Units is checked):</label>
+			<input type="checkbox" id="abbr-units" name="abbr-units" checked>
 		</div>
 
 		<p>
