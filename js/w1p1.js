@@ -31,7 +31,7 @@ let convertMetricWeight = (function () {
 	};
 
 	/**
-	 * Convert number in unit to picograms
+	 * Helper function - Convert number in unit to picograms
 	 * @param {Number} n The starting weight
 	 * @param {string} u The unit abbreviation
 	 * @see uNames object keys for available units for u
@@ -41,7 +41,7 @@ let convertMetricWeight = (function () {
 	}
 
 	/**
-	 * Convert number in picograms
+	 * Helper Function - Convert number in picograms
 	 * @param {Number} n The starting weight in picograms
 	 * @param {string} u The unit abbreviation to convert to
 	 * @see uNames object keys for available units for u
