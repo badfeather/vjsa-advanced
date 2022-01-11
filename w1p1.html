@@ -12,34 +12,56 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 
-<body>	
-	<p><a href="./index.html">Projects home</a></p>	
-	<h1>Week 1, Project 1: Toggle Password Visibility</h1>	
-	
-	<p>Enter your username and password to login.</p>
-	<form>
+<body>
+	<p><a href="./index.html">Projects home</a></p>
+	<h1>Week 1, Project 1: Weight Conversion Library</h1>
+
+	<form id="form">
 		<div>
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username">
+			<label for="mass">Mass</label>
+			<input type="number" name="mass" id="mass">
 		</div>
-	
+
 		<div>
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password">
+			<label for="from-units">Convert from:</label>
+
+			<select name="from-units" id="from-units">
+				<option value="g">grams</option>
+				<option value="mcg">micrograms</option>
+				<option value="mg">milligrams</option>
+				<option value="cg">centigrams</option>
+    			<option value="dg">decigrams</option>
+				<option value="dag">decagrams</option>
+				<option value="hg">hectograms</option>
+    			<option value="kg">kilograms</option>
+    			<option value="t">tonnes</option>
+			</select>
 		</div>
-	
+
 		<div>
-			<label for="show-password">
-				<input type="checkbox" name="show-passwords" id="show-password">
-				Show password
-			</label>
+			<label for="to-units">Convert to:</label>
+
+			<select name="to-units" id="to-units">
+				<option value="g">grams</option>
+				<option value="mcg">micrograms</option>
+				<option value="mg">milligrams</option>
+				<option value="cg">centigrams</option>
+    			<option value="dg">decigrams</option>
+				<option value="dag">decagrams</option>
+				<option value="hg">hectograms</option>
+    			<option value="kg">kilograms</option>
+    			<option value="t">tonnes</option>
+			</select>
 		</div>
-	
+
 		<p>
-			<button type="submit">Log In</button>
+			<button type="submit">Convert</button>
 		</p>
 	</form>
-	
+
+	<h2>Result</h2>
+	<p id="result" class="result" aria-live="polite"></p>
+
 	<hr>
 	<h3>Project JS</h3>
 	<pre><code id="view-js" class="hljs language-javascript"></code></pre>
@@ -53,4 +75,3 @@
 	</script>
 </body>
 </html>
-		
