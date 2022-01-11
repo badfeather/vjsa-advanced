@@ -67,7 +67,7 @@ let convertMetricWeight = (function () {
 	}
 
 	// Export public methods
-	return {n2pg, pg2u, u2u};
+	return {u2u};
 })();
 
 // TEST FORM
