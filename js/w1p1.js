@@ -32,8 +32,8 @@ let convertMetricWeight = (function () {
 
 	/**
 	 * Helper function - Convert number in unit to picograms
-	 * @param {Number} n The starting weight
-	 * @param {string} u The unit abbreviation
+	 * @param {Number} n The input weight
+	 * @param {string} u The input unit abbreviation
 	 * @see uNames object keys for available units for u
 	 */
 	function n2pg (n, u) {
@@ -42,7 +42,7 @@ let convertMetricWeight = (function () {
 
 	/**
 	 * Helper Function - Convert number in picograms
-	 * @param {Number} n The starting weight in picograms
+	 * @param {Number} n The input weight in picograms
 	 * @param {string} u The unit abbreviation to convert to
 	 * @see uNames object keys for available units for u
 	 */
@@ -52,16 +52,16 @@ let convertMetricWeight = (function () {
 
 	/**
 	 * Convert number in unit to picograms
-	 * @param {Number} n The starting weight
-	 * @param {string} inU The unit abbreviation for the starting weight
+	 * @param {Number} n The input weight
+	 * @param {string} inU The unit abbreviation for the input weight
 	 * @param {string} outU The unit abbreviation for the output weight
 	 * @see uNames object keys for available units for inU and outU
-	 * param {boolean} addUnit Whether or not to add a unit. Defaults to true.
+	 * param {boolean} addUnit Whether or not to show the unit. Defaults to true.
 	 * param {boolean} abbr Whether or not to abbreviate the unit. Defaults to true.
 	 */
-	function u2u (n, inU, outU, addUnit = 1, abbr = 1) {
+	function u2u (n, inU, outU, showUnit = 1, abbr = 1) {
 		let val = pg2u(n2pg(parseFloat(n), inU), outU);
-		if (!addUnit) return val;
+		if (!showUnit) return val;
 		if (abbr) return val + ' ' + outU;
 		return val + ' ' + uNames[outU] + (val === 1 ? '' : 's');
 	}
