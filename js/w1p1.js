@@ -60,7 +60,7 @@ let convertMetricWeight = (function () {
 	 * param {boolean} abbr Whether or not to abbreviate the unit. Defaults to true.
 	 */
 	function u2u (n, inU, outU, showUnit = 1, abbr = 1) {
-		let val = pg2u(n2pg(parseFloat(n), inU), outU);
+		let val = pg2u(n2pg(n, inU), outU);
 		if (!showUnit) return val;
 		if (abbr) return val + ' ' + outU;
 		return val + ' ' + uNames[outU] + (val === 1 ? '' : 's');
