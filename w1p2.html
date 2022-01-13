@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Week 1, Project 1: Toggle Password Visibility</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css?v=8">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.css" rel="stylesheet" />
+	<link rel="icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+	<p><a href="./index.html">Projects home</a></p>
+	<h1>Week 1, Project 1: Weight Conversion Library</h1>
+
+	<form id="form">
+		<div>
+			<label for="weight">Weight</label>
+			<input type="number" name="weight" id="weight">
+		</div>
+
+		<div>
+			<label for="from-units">Convert from:</label>
+
+			<select name="from-units" id="from-units">
+				<option value="">--Select a unit--</option>
+				<option value="pg">picograms</option>
+				<option value="ng">nanograms</option>
+				<option value="mcg">micrograms</option>
+				<option value="mg">milligram</option>
+				<option value="cg">centigram</option>
+				<option value="dg">decigram</option>
+				<option value="g">gram</option>
+				<option value="dag">decagram</option>
+				<option value="hg">hectogram</option>
+				<option value="kg">kilogram</option>
+				<option value="t">tonne</option>
+				<option value="Mt">megatonne</option>
+				<option value="Gt">gigatonne</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="to-units">Convert to:</label>
+
+			<select name="to-units" id="to-units">
+				<option value="">--Select a unit--</option>
+				<option value="pg">picograms</option>
+				<option value="ng">nanograms</option>
+				<option value="mcg">micrograms</option>
+				<option value="mg">milligram</option>
+				<option value="cg">centigram</option>
+				<option value="dg">decigram</option>
+				<option value="g">gram</option>
+				<option value="dag">decagram</option>
+				<option value="hg">hectogram</option>
+				<option value="kg">kilogram</option>
+				<option value="t">tonne</option>
+				<option value="Mt">megatonne</option>
+				<option value="Gt">gigatonne</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="show-units">Show units:</label>
+			<input type="checkbox" id="show-units" name="show-units" checked>
+		</div>
+
+		<div>
+			<label for="abbr-units">Abbreviate units (applies if Show units is checked):</label>
+			<input type="checkbox" id="abbr-units" name="abbr-units" checked>
+		</div>
+
+		<p>
+			<button type="submit">Convert</button>
+		</p>
+	</form>
+
+	<h2>Result</h2>
+	<p id="result" class="result" aria-live="polite"></p>
+
+	<hr>
+	<h3>Project JS</h3>
+	<pre><code id="view-js" class="hljs language-javascript"></code></pre>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script src="js/viewjs.js"></script>
+	<script src="js/w1p2.js"></script>
+	<script>
+		viewJS('js/w1p2.js');
+	</script>
+</body>
+</html>
