@@ -77,6 +77,18 @@ let MetricWeight = (function () {
 	}
 
 	/**
+	 * Create conversion helper functions for all the unit keys in the units object
+	 * The calls would be in the format toKey (the first initial of the key name is capitalized)
+	 */
+	//for (let key in units) {
+		//let U = key.charAt(0).toUpperCase() + key.slice(1);
+		//Constructor.prototype.to`${U}` = function () {
+			//this.weight = convertTo(this.weight, this.unit, key);
+			//this.unit = key;
+		//}
+	//}
+
+	/**
 	 * Return formatted string including the weight and the unit
 	 * @param {boolean} abbr Whether to display the abbreviated or full unit name
 	 */
