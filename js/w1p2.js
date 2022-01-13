@@ -1,4 +1,5 @@
-let MetricWeight = (function () {
+let Weight = (function () {
+	// metric
 	let pg = 1,
 		ng = pg * 1000,
 		mcg = ng * 1000,
@@ -12,9 +13,19 @@ let MetricWeight = (function () {
 		t = kg * 1000,
 		Mt = t * 1000000,
 		Gt = Mt * 1000,
-		fromPg = {pg, ng, mcg, mg, cg, dg, g, dag, hg, kg, t, Mt, Gt};
+		// imperial
+		gr = pg * 64798910000,
+		dr = gr * 27.34375,
+		oz = dr * 16,
+		lb = oz * 16,
+		cwt = lb * 100,
+		lcwt  = lb * 112,
+		T = cwt * 20,
+		lT = lcwt * 20,
+		fromPg = {pg, ng, mcg, mg, cg, dg, g, dag, hg, kg, t, Mt, Gt, gr, dr, oz, lb, cwt, lcwt, T, lT};
 
 	let units = {
+		// metric
 		pg: 'picogram',
 		ng: 'nanogram',
 		mcg: 'microgram',
@@ -27,7 +38,16 @@ let MetricWeight = (function () {
 		kg: 'kilogram',
 		t: 'tonne',
 		Mt: 'megatonne',
-		Gt: 'gigatonne'
+		Gt: 'gigatonne',
+		// imperial (US)
+		gr: 'grain',
+		dr: 'dram',
+		oz: 'ounce',
+		lb: 'pound',
+		cwt: 'hundredweight',
+		lcwt: 'long hundredweight',
+		T: 'ton',
+		lT: 'long ton'
 	};
 
 	/**
@@ -80,13 +100,12 @@ let MetricWeight = (function () {
 	 * Create conversion helper functions for all the unit keys in the units object
 	 * The calls would be in the format toKey (the first initial of the key name is capitalized)
 	 */
-	//for (let key in units) {
-		//let U = key.charAt(0).toUpperCase() + key.slice(1);
-		//Constructor.prototype.to`${U}` = function () {
-			//this.weight = convertTo(this.weight, this.unit, key);
-			//this.unit = key;
-		//}
-	//}
+	for (let key in units) {
+		Constructor.prototype[`to_${key}`] = function () {
+			this.weight = convertTo(this.weight, this.unit, key);
+			this.unit = key;
+		}
+	}
 
 	/**
 	 * Return formatted string including the weight and the unit
@@ -117,7 +136,7 @@ form.addEventListener('submit', function(event) {
 	let n = weight.value,
 		inU = fromUnits.value,
 		outU = toUnits.value,
-		newWeight = new MetricWeight(n, inU),
+		newWeight = new Weight(n, inU),
 		resultText,
 		unit;
 	console.log(weight);
@@ -132,3 +151,13 @@ form.addEventListener('submit', function(event) {
 
 	result.innerHTML = resultText;
 });
+
+// CONSOLE TESTS
+let w1 = new Weight(32, 'lb');
+console.log(w1);
+w1.to_oz();
+console.log(w1.format());
+w1.to_g();
+console.log(w1.format(0));
+
+
