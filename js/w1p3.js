@@ -270,6 +270,6 @@ form.addEventListener('submit', function(event) {
 // CONSOLE TESTS
 let w1 = new Weight(32, 'lb');
 w1.add_lb(10).subtract_g(3).to_g();
-console.log('Test: started with 32 lb, added 10 lb, subtracted 3 g, converted to grams: ' + w1.format());
+console.log('Test: started with 32 lb, added 10 lb, subtracted 3 g, converted to grams, formatted with abbr set to 0: ' + w1.format(0));
 
 
