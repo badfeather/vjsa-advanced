@@ -21,11 +21,12 @@ ol,
 form,
 blockquote,
 article,
+table,
+details,
 .article,
 .article-content,
 .row,
-table,
-details {
+.result {
 	margin: 0 0 1.5rem;
 }
 
@@ -331,7 +332,7 @@ summary img {
 	height: 6rem;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .emoji-button:hover,
@@ -395,7 +396,7 @@ summary img {
 
 .img-btn.hover-rotate:hover img,
 .img-btn.hover-rotate:focus img {
-	animation: dierotate 2s infinite linear;	
+	animation: dierotate 2s infinite linear;
 }
 
 .img-btn.hover-rotate:disabled img {
