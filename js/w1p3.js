@@ -203,7 +203,8 @@ let Weight = (function () {
 	Constructor.prototype.format = function (abbr = 1) {
 		let unit = abbr ? this.unit : units[this.unit];
 		if (!abbr && this.weight !== 1) unit = unit + 's';
-		return this.weight.toLocaleString() + ' ' + unit;
+		//return this.weight.toLocaleString() + ' ' + unit;
+		return this.weight + ' ' + unit;
 	}
 
 	// Export constructor object
@@ -222,6 +223,7 @@ let form = document.getElementById('form'),
 	abbrUnit = document.getElementById('abbr-unit'),
 	history = document.getElementById('history'),
 	total = document.getElementById('total'),
+	abbrChecked = 1,
 	formWeight = new Weight(0, 'g');
 
 form.addEventListener('submit', function(event) {
@@ -232,6 +234,7 @@ form.addEventListener('submit', function(event) {
 		subtractUnitVal = subtractUnit.value,
 		convertUnitVal = convertUnit.value,
 		abbr = abbrUnit.checked ? 1 : 0,
+		checked = !abbr ? 'Unchecked' : 'Checked',
 		newMessage = [];
 
 	if (addWeightVal) {
@@ -249,9 +252,19 @@ form.addEventListener('submit', function(event) {
 		newMessage.push(`Converted to ${formWeight.unit}.`)
 	}
 
-	history.innerHTML += '<p>' + newMessage.join(' ') + ' New Weight: ' + formWeight.weight + ' ' + formWeight.unit + '</p>';
+	if (abbr !== abbrChecked) {
+		newMessage.push(`${checked} abbreviate unit.`);
+		abbrChecked = abbr;
+	}
+
+	history.innerHTML += `<p>${newMessage.join(' ')} New Weight: ${formWeight.format(abbr)}</p>`;
 	total.innerHTML = formWeight.format(abbr);
 	form.reset();
+	if (abbrChecked) {
+		abbrUnit.setAttribute('checked', '')
+	} else {
+		abbrUnit.removeAttribute('checked');
+	}
 });
 
 // CONSOLE TESTS
