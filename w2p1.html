@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Week 2, Project 1: Convert Weight Library - Options</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css?v=8">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.css" rel="stylesheet" />
+	<link rel="icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+	<p><a href="./index.html">Projects home</a></p>
+	<h1>Week 2, Project 1: Convert Weight Library - Options</h1>
+
+	<div id="result" class="result" aria-live="polite">
+		<h4>History:</h4>
+		<div id="history">
+			<p>Initial value: 0 g</p>
+		</div>
+		<h4>Weight:</h4>
+		<p id="total">0 g</p>
+	</div>
+
+	<form id="form">
+		<div>
+			<label for="add-weight">Add Weight</label>
+			<input type="number" name="add-weight" id="add-weight" step="0.000001" min="0" max="100000">
+
+			<label for="add-unit">Add Weight Unit (defaults to grams if none is chose):</label>
+			<select name="add-unit" id="add-unit">
+				<option value="g">--Select a unit--</option>
+				<optgroup label="Metric">
+					<option value="pg">picograms</option>
+					<option value="ng">nanograms</option>
+					<option value="mcg">micrograms</option>
+					<option value="mg">milligram</option>
+					<option value="cg">centigram</option>
+					<option value="dg">decigram</option>
+					<option value="g">gram</option>
+					<option value="dag">decagram</option>
+					<option value="hg">hectogram</option>
+					<option value="kg">kilogram</option>
+					<option value="t">tonne</option>
+					<option value="Mt">megatonne</option>
+					<option value="Gt">gigatonne</option>
+				</optgroup>
+				<optgroup label="imperial">
+					<option value="gr">grain</option>
+					<option value="dr">dram</option>
+					<option value="oz">ounce</option>
+					<option value="lb">pound</option>
+					<option value="cwt">hundredweight</option>
+					<option value="lcwt">long hundredweight</option>
+					<option value="T">ton</option>
+					<option value="lT">long ton</option>
+				</optgroup>
+			</select>
+		</div>
+
+		<div>
+			<label for="subtract-weight">Subtract Weight</label>
+			<input type="number" name="subtract-weight" id="subtract-weight" step="0.000001" min="0" max="100000">
+
+			<label for="subtract-unit">Add Weight Unit (defaults to grams if none is chose):</label>
+			<select name="subtract-unit" id="subtract-unit">
+				<option value="g">--Select a unit--</option>
+				<optgroup label="Metric">
+					<option value="pg">picograms</option>
+					<option value="ng">nanograms</option>
+					<option value="mcg">micrograms</option>
+					<option value="mg">milligram</option>
+					<option value="cg">centigram</option>
+					<option value="dg">decigram</option>
+					<option value="g">gram</option>
+					<option value="dag">decagram</option>
+					<option value="hg">hectogram</option>
+					<option value="kg">kilogram</option>
+					<option value="t">tonne</option>
+					<option value="Mt">megatonne</option>
+					<option value="Gt">gigatonne</option>
+				</optgroup>
+				<optgroup label="imperial">
+					<option value="gr">grain</option>
+					<option value="dr">dram</option>
+					<option value="oz">ounce</option>
+					<option value="lb">pound</option>
+					<option value="cwt">hundredweight</option>
+					<option value="lcwt">long hundredweight</option>
+					<option value="T">ton</option>
+					<option value="lT">long ton</option>
+				</optgroup>
+			</select>
+		</div>
+
+		<div>
+			<label for="convert-unit">Convert to:</label>
+			<select name="convert-unit" id="convert-unit">
+				<option value="">--Select a unit--</option>
+				<optgroup label="Metric">
+					<option value="pg">picograms</option>
+					<option value="ng">nanograms</option>
+					<option value="mcg">micrograms</option>
+					<option value="mg">milligram</option>
+					<option value="cg">centigram</option>
+					<option value="dg">decigram</option>
+					<option value="g">gram</option>
+					<option value="dag">decagram</option>
+					<option value="hg">hectogram</option>
+					<option value="kg">kilogram</option>
+					<option value="t">tonne</option>
+					<option value="Mt">megatonne</option>
+					<option value="Gt">gigatonne</option>
+				</optgroup>
+				<optgroup label="imperial">
+					<option value="gr">grain</option>
+					<option value="dr">dram</option>
+					<option value="oz">ounce</option>
+					<option value="lb">pound</option>
+					<option value="cwt">hundredweight</option>
+					<option value="lcwt">long hundredweight</option>
+					<option value="T">ton</option>
+					<option value="lT">long ton</option>
+				</optgroup>
+			</select>
+		</div>
+
+		<div>
+			<label for="abbr-unit">Abbreviate unit:</label>
+			<input type="checkbox" id="abbr-unit" name="abbr-unit">
+		</div>
+
+		<p>
+			<button type="submit">Run</button>
+		</p>
+	</form>
+
+	<hr>
+	<h3>Project JS</h3>
+	<pre><code id="view-js" class="hljs language-javascript"></code></pre>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script src="js/viewjs.js"></script>
+	<script src="js/w2p1.js"></script>
+	<script>
+		viewJS('js/w2p1.js');
+	</script>
+</body>
+</html>
