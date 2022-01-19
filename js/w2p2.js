@@ -230,7 +230,7 @@ form.addEventListener('submit', function(event) {
 		newMessage.push(`${years} years added.`);
 	}
 
-	history.innerHTML += `<p>${newMessage.join(' ')} New Time: ${time.getLongDate(true)}</p>`;
+	history.innerHTML += `<p>${newMessage.join(' ')} New time: ${time.getLongDate(true)}</p>`;
 	form.reset();
 });
 
