@@ -1,5 +1,6 @@
-function viewJS(filepath) {
-	let code = document.getElementById('view-js');
+function viewJS(filepath, elId) {
+	elId = elId ? elId : 'view-js';
+	let code = document.getElementById(elId);
 	if (!filepath || !code) return;
 
 	/**
@@ -13,11 +14,11 @@ function viewJS(filepath) {
 			return `&#${c.charCodeAt(0)};`;
 		});
 	}
-		
+
 	function renderJS(str) {
 		code.innerHTML = sanitizeHTML(str);
 	}
-	
+
 	/**
 	 * Get weather for the user's current location
 	 * @param  {Object} position The location data
@@ -27,7 +28,7 @@ function viewJS(filepath) {
 			return response.text();
 		}
 		throw response.status;
-		
+
 	}).then(function(data) {
 		renderJS(data);
 
@@ -35,15 +36,6 @@ function viewJS(filepath) {
 		console.log('aint workin');
 		console.warn(error);
 	});
-	
-	//hljs.highlightElement(code);
+
 	Prism.highlightElement(code);
 }
-//hljs.highlightAll();
-//hljs.initHighlightingOnLoad();
-
-//document.addEventListener('DOMContentLoaded', (event) => {
-//  document.querySelectorAll('pre code').forEach((el) => {
-//    hljs.highlightElement(el);
-//  });
-//});

@@ -26,7 +26,9 @@ details,
 .article,
 .article-content,
 .row,
-.result {
+.result,
+pre,
+body pre[class*="language-"] {
 	margin: 0 0 1.5rem;
 }
 
