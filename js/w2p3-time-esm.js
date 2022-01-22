@@ -92,7 +92,7 @@ function getLongDate (date, options = {}) {
 			}
 		}
 		longDate += `, ${hours}:${date.getMinutes()}`;
-		if (settings.showSeconds) date += `:${date.getSeconds()}`;
+		if (settings.showSeconds) longDate += `:${date.getSeconds()}`;
 		longDate += suffix;
 	}
 	return longDate;
