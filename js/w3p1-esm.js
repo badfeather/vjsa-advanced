@@ -9,7 +9,7 @@ let Time = (function () {
 	 */
 	function Constructor (date) {
 		if (date) {
-			let newDate = new Date(dateStr);
+			let newDate = new Date(date);
 			if (newDate.toString() !== 'Invalid Date') {
 				this.date = date;
 				return;
