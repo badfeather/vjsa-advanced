@@ -1,4 +1,4 @@
-import * as _ from './w2p3-esm.js';
+import Time from './w3p1-esm.js';
 
 // TEST FORM
 // -----------------------------------------------
@@ -10,10 +10,10 @@ let form = document.getElementById('form'),
 	add_months = document.getElementById('add-months'),
 	add_years = document.getElementById('add-years'),
 	history = document.getElementById('history'),
-	date = new Date();
+	time = new Time();
 
 form.reset();
-history.innerHTML = `<p>Starting time: ${_.getLongDate(date, {showTime: true})}</p>`;
+history.innerHTML = `<p>Starting time: ${time.getLongDate()}</p>`;
 
 form.addEventListener('submit', function(event) {
 	event.preventDefault();
@@ -26,35 +26,35 @@ form.addEventListener('submit', function(event) {
 		newMessage = [];
 
 	if (seconds) {
-		_.addSeconds(date, seconds);
+		time.addSeconds(seconds);
 		newMessage.push(`${seconds} seconds added.`);
 	}
 
 	if (minutes) {
-		_.addMinutes(date, minutes);
+		time.addMinutes(minutes);
 		newMessage.push(`${minutes} minutes added.`);
 	}
 
 	if (hours) {
-		_.addHours(date, hours);
+		time.addHours(hours);
 		newMessage.push(`${hours} hours added.`);
 	}
 
 	if (days) {
-		_.addDays(date, days);
+		time.addDays(days);
 		newMessage.push(`${days} days added.`);
 	}
 
 	if (months) {
-		_.addMonths(date, months);
+		time.addMonths(months);
 		newMessage.push(`${months} months added.`);
 	}
 
 	if (years) {
-		_.addYears(date, years);
+		time.addYears(years);
 		newMessage.push(`${years} years added.`);
 	}
 
-	history.innerHTML += `<p>${newMessage.join(' ')} New time: ${_.getLongDate(date, {showTime: true})}</p>`;
+	history.innerHTML += `<p>${newMessage.join(' ')} New time: ${time.getLongDate()}</p>`;
 	form.reset();
 });
