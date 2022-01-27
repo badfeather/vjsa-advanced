@@ -161,7 +161,7 @@ function addMonths (date, n) {
 function addYears (date, n) {
 	n = parseFloat(n);
 	if (isNaN(n)) throw 'Not a valid number.';
-	date.setYear(date.getFullYear() + n);
+	date.setFullYear(date.getFullYear() + n);
 }
 
 export {getYear, getMonth, getDay, getHours, getMinutes, getSeconds, getLongDate, addSeconds, addMinutes, addHours, addMonths, addYears};

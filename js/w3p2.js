@@ -13,7 +13,7 @@ let form = document.getElementById('form'),
 	time = new Time();
 
 form.reset();
-history.innerHTML = `<p>Starting time: ${time.getLongDate()}</p>`;
+history.innerHTML = `<p>Starting time: ${time.getLocaleString()}</p>`;
 
 form.addEventListener('submit', function(event) {
 	event.preventDefault();
@@ -23,7 +23,8 @@ form.addEventListener('submit', function(event) {
 		days = add_days.value,
 		months = add_months.value,
 		years = add_years.value,
-		newMessage = [];
+		newMessage = [],
+		newTime;
 
 	if (seconds) {
 		time.addSeconds(seconds);
@@ -55,14 +56,15 @@ form.addEventListener('submit', function(event) {
 		newMessage.push(`${years} years added.`);
 	}
 
-	history.innerHTML += `<p>${newMessage.join(' ')} New time: ${time.getLongDate()}</p>`;
+	history.innerHTML += `<p>${newMessage.join(' ')} New time: ${time.getLocaleString()}</p>`;
 	form.reset();
 });
 
+
 // CONSOLE TESTS
 let monday = new Time('January 24, 2022 00:00:00');
-console.log(monday._date);
-//monday._date = 'xyz';
+console.log(monday.date);
+//monday.date = 'xyz';
 let wednesday = monday.addDays(2);
 console.log(monday.getDay());
 console.log(wednesday.getDay());

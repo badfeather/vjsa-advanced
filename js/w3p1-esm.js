@@ -165,7 +165,7 @@ let Time = (function () {
 	Constructor.prototype.addYears = function (n) {
 		n = parseFloat(n);
 		if (isNaN(n)) throw 'Not a valid number.';
-		this.date.setYear(this.date.getFullYear() + n);
+		this.date.setFullYear(this.date.getFullYear() + n);
 		return this;
 	}
 
