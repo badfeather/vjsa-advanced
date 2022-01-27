@@ -46,7 +46,7 @@ let Time = (function () {
 	 * @return {string} day name
 	 */
 	Constructor.prototype.getDate = function () {
-		return days[this.date.getDate()];
+		return this.date.getDate();
 	}
 
 	/**

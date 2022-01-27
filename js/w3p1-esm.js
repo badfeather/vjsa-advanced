@@ -46,7 +46,7 @@ let Time = (function () {
 	 * @return {string} day name
 	 */
 	Constructor.prototype.getDate = function () {
-		return days[this.date.getDate()];
+		return this.date.getDate();
 	}
 
 	/**
@@ -87,17 +87,17 @@ let Time = (function () {
 			amPm: true
 		}, options);
 		let date = `${days[this.date.getDay()]}, ${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}`;
-		if (options.showTime) {
+		if (settings.showTime) {
 			let hours = this.date.getHours(),
 				suffix = '';
-			if (options.amPm) {
+			if (settings.amPm) {
 				suffix = hours >= 12 ? ' p.m.' : ' a.m.';
 				if (hours >= 13) {
 					hours = hours - 12;
 				}
 			}
 			date += `, ${hours}:${this.date.getMinutes()}`;
-			if (options.showSeconds) date += `:${this.date.getSeconds()}`;
+			if (settings.showSeconds) date += `:${this.date.getSeconds()}`;
 			date += suffix;
 		}
 		return date;

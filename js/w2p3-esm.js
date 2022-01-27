@@ -34,7 +34,7 @@ function getDay (date) {
  * @return {integer} - The day number of month
  */
 function getDate (date) {
-	return days[date.getDate()];
+	return date.getDate();
 }
 
 /**
