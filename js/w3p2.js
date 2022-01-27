@@ -23,8 +23,7 @@ form.addEventListener('submit', function(event) {
 		days = add_days.value,
 		months = add_months.value,
 		years = add_years.value,
-		newMessage = [],
-		newTime;
+		newMessage = [];
 
 	if (seconds) {
 		time.addSeconds(seconds);
