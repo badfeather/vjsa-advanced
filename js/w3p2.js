@@ -26,32 +26,32 @@ form.addEventListener('submit', function(event) {
 		newMessage = [];
 
 	if (seconds) {
-		time.addSeconds(seconds);
+		time = time.addSeconds(seconds);
 		newMessage.push(`${seconds} seconds added.`);
 	}
 
 	if (minutes) {
-		time.addMinutes(minutes);
+		time = time.addMinutes(minutes);
 		newMessage.push(`${minutes} minutes added.`);
 	}
 
 	if (hours) {
-		time.addHours(hours);
+		time = time.addHours(hours);
 		newMessage.push(`${hours} hours added.`);
 	}
 
 	if (days) {
-		time.addDays(days);
+		time = time.addDays(days);
 		newMessage.push(`${days} days added.`);
 	}
 
 	if (months) {
-		time.addMonths(months);
+		time = time.addMonths(months);
 		newMessage.push(`${months} months added.`);
 	}
 
 	if (years) {
-		time.addYears(years);
+		time = time.addYears(years);
 		newMessage.push(`${years} years added.`);
 	}
 
