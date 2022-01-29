@@ -1,4 +1,4 @@
-import Time from './w3p2-esm.js';
+import Time from './w3p3-esm.js';
 
 // TEST FORM
 // -----------------------------------------------
@@ -69,4 +69,21 @@ console.log(monday._settings);
 let wednesday = monday.addDays(2);
 console.log(monday.getDay());
 console.log(wednesday.getDay());
+
+// Create a new Time() instance
+let halloween = new Time('October 31, 2021');
+console.log(halloween);
+
+// If the year on the Time() instance is greater than 2021, don't update
+document.addEventListener('time:update', function (event) {
+	console.log(event);
+	if (event.detail.time.date.getFullYear() > 2021) {
+		alert('Year is greater than 2021. Canceled.')
+		event.preventDefault();
+	}
+});
+
+halloween.addDays(3).addMonths(1).addYears(1);
+
+
 
