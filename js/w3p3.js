@@ -78,7 +78,7 @@ console.log(halloween);
 document.addEventListener('time:update', function (event) {
 	console.log(event);
 	if (event.detail.time.date.getFullYear() > 2021) {
-		alert('Year is greater than 2021. Canceled.')
+		console.log('Year is greater than 2021. Canceled.');
 		event.preventDefault();
 	}
 });
