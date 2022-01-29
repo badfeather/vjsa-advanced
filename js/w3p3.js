@@ -61,22 +61,27 @@ form.addEventListener('submit', function(event) {
 
 
 // CONSOLE TESTS
-let monday = new Time('January 24, 2022 00:00:00');
-console.log(monday);
-console.log(monday.date);
-console.log(monday._settings);
-//monday.date = 'xyz';
-let wednesday = monday.addDays(2);
-console.log(monday.getDay());
-console.log(wednesday.getDay());
+//let monday = new Time('January 24, 2022 00:00:00');
+//console.log(monday);
+//console.log(monday.date);
+//console.log(monday._settings);
+////monday.date = 'xyz';
+//let wednesday = monday.addDays(2);
+//console.log(monday.getDay());
+//console.log(wednesday.getDay());
 
 // Create a new Time() instance
 let halloween = new Time('October 31, 2021');
-console.log(halloween);
+console.log('Initial halloween date: ' + halloween.date);
 
 // If the year on the Time() instance is greater than 2021, don't update
 document.addEventListener('time:update', function (event) {
-	console.log(event);
+	//console.log(event);
+	console.log('Instance date: ' + event.detail.instance.date);
+	if (event.detail.instance !== halloween) {
+		console.log('Instance is not halloween. Ignoring listener conditional and returning.');
+		return;
+	}
 	if (event.detail.time.date.getFullYear() > 2021) {
 		console.log('Year is greater than 2021. Canceled.');
 		event.preventDefault();
@@ -84,6 +89,7 @@ document.addEventListener('time:update', function (event) {
 });
 
 halloween.addDays(3).addMonths(1).addYears(1);
+console.log('Halloween date after methods: ' + halloween.date);
 
 
 

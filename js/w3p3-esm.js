@@ -133,10 +133,12 @@ Constructor.prototype.addSeconds = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'seconds',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -152,10 +154,12 @@ Constructor.prototype.addMinutes = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'minutes',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -171,10 +175,12 @@ Constructor.prototype.addHours = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'hours',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -190,10 +196,12 @@ Constructor.prototype.addDays = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'days',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -209,10 +217,12 @@ Constructor.prototype.addMonths = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'months',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -228,10 +238,12 @@ Constructor.prototype.addYears = function (n) {
 	if (emitEvent('time:update', {
 		time,
 		type: 'years',
-		amount: n
+		amount: n,
+		instance: this
 	})) {
 		return time;
 	};
+	return new Constructor(this.date, this._settings);
 }
 
 export default Constructor;
