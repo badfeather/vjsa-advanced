@@ -1,0 +1,26 @@
+{
+  "name": "vjsa-advanced",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "js": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badfeather/vjsa-advanced.git"
+  },
+  "author": "brad@badfeather.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/badfeather/vjsa-advanced/issues"
+  },
+  "homepage": "https://github.com/badfeather/vjsa-advanced#readme",
+  "devDependencies": {
+    "rollup": "^2.66.1",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "prismjs": "^1.26.0"
+  }
+}

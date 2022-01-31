@@ -1,4 +1,4 @@
-import Time from './w3p3-esm.js';
+import Time from './w4p1-esm.js';
 
 // TEST FORM
 // -----------------------------------------------
@@ -72,20 +72,20 @@ form.addEventListener('submit', function(event) {
 
 // Create a new Time() instance
 let halloween = new Time('October 31, 2021');
-console.log('Initial halloween date: ' + halloween.date);
+console.log('Initial halloween constructor: ', halloween);
 
 // If the year on the Time() instance is greater than 2021, don't update
 document.addEventListener('time:update', function (event) {
 	//console.log(event);
 	console.log('Instance date: ' + event.detail.instance.date);
-	if (event.detail.instance !== halloween) {
+	if (event.detail.instance === halloween || event.detail.instance._history.includes(halloween)) {
+		console.log('Instance is halloween or in halloween&rsquo;s history.');
+		if (event.detail.time.date.getFullYear() > 2021) {
+			console.log('Year is greater than 2021. Canceled.');
+			event.preventDefault();
+		}
+	} else {
 		console.log('Instance is not halloween. Ignoring listener conditional and returning.');
-		return;
-	}
-	console.log('Instance is halloween. Continuing.')
-	if (event.detail.time.date.getFullYear() > 2021) {
-		console.log('Year is greater than 2021. Canceled.');
-		event.preventDefault();
 	}
 });
 
