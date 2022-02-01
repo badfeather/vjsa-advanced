@@ -22,117 +22,22 @@
 		return elem.dispatchEvent(event);
 	}
 
-	/*!
-	 * Create an immutable clone of data (an array, object, map, set, etc.)
-	 * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
-	 * @param  {*} obj The data object to copy
-	 * @return {*}     The clone of the array or object
-	 */
-	function copy (obj) {
-		//
-		// Methods
-		//
-
-		/**
-		 * Copy properties from the original object to the clone
-		 * @param {Object|Function} clone The cloned object
-		 */
-		function copyProps (clone) {
-			for (let key in obj) {
-				if (Object.prototype.hasOwnProperty.call(obj, key)) {
-					clone[key] = copy(obj[key]);
-				}
-			}
-		}
-
-		/**
-		 * Create an immutable copy of an object
-		 * @return {Object}
-		 */
-		function cloneObj () {
-			let clone = {};
-			copyProps(clone);
-			return clone;
-		}
-
-		/**
-		 * Create an immutable copy of an array
-		 * @return {Array}
-		 */
-		function cloneArr () {
-			return obj.map(function (item) {
-				return copy(item);
-			});
-		}
-
-		/**
-		 * Create an immutable copy of a Map
-		 * @return {Map}
-		 */
-		function cloneMap () {
-			let clone = new Map();
-			for (let [key, val] of obj) {
-				clone.set(key, copy(val));
-			}
-			return clone;
-		}
-
-		/**
-		 * Create an immutable clone of a Set
-		 * @return {Set}
-		 */
-		function cloneSet () {
-			let clone = new Set();
-			for (let item of set) {
-				clone.add(copy(item));
-			}
-			return clone;
-		}
-
-		/**
-		 * Create an immutable copy of a function
-		 * @return {Function}
-		 */
-		function cloneFunction () {
-			let clone = obj.bind(this);
-			copyProps(clone);
-			return clone;
-		}
-
-		//
-		// Inits
-		//
-
-		// Get object type
-		let type = Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-
-		// Return a clone based on the object type
-		if (type === 'object') return cloneObj();
-		if (type === 'array') return cloneArr();
-		if (type === 'map') return cloneMap();
-		if (type === 'set') return cloneSet();
-		if (type === 'function') return cloneFunction();
-		return obj;
-	}
-
 	/**
 	 * The Constructor object
 	 * @param {dateString, value, dateObject or array} date Optional parameter for date
 	 * If no date is passed, or the date parameter causes an invalid date, the current date will be used
 	 */
-	function Constructor (date = [], options = {}, history = []) {
+	function Constructor (date = [], options = {}) {
 		if (!Array.isArray(date)) {
 			date = [date];
 		}
 		let settings = Object.assign({
 			days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-			months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-		});
+			months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+			instanceName: ''
+		}, options);
 		Object.freeze(settings);
 		let time = new Date(...date);
-		history = Array.isArray(history) && history.length ? history : [];
-		console.log(history);
-		Object.freeze(history);
 		Object.defineProperties(this, {
 			date: {
 				value: time
@@ -140,9 +45,6 @@
 			_settings: {
 				value: settings
 			},
-			_history: {
-				value: history
-			}
 		});
 		emitEvent('time:ready', {
 			time: this
@@ -231,9 +133,7 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setSeconds(d.getSeconds() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'seconds',
@@ -241,7 +141,7 @@
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	/**
@@ -253,9 +153,7 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setMinutes(d.getMinutes() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'minutes',
@@ -263,7 +161,7 @@
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	/**
@@ -275,9 +173,7 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setHours(d.getHours() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'hours',
@@ -285,7 +181,7 @@
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	/**
@@ -297,9 +193,7 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setDate(d.getDate() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'days',
@@ -307,7 +201,7 @@
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	/**
@@ -319,9 +213,7 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setMonth(d.getMonth() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'months',
@@ -329,7 +221,7 @@
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	/**
@@ -341,18 +233,15 @@
 		if (isNaN(n)) throw 'Not a valid number.';
 		let d = new Date(this.date);
 		d.setFullYear(d.getFullYear() + n);
-		let history = copy(this._history);
-		history.push(this);
-		let time = new Constructor(d, this._settings, history);
+		let time = new Constructor(d, this._settings);
 		if (emitEvent('time:update', {
 			time,
 			type: 'years',
 			amount: n,
-			instance: this,
 			instance: this
 		})) {
 			return time;
-		}	return new Constructor(this.date, this._settings, this._history);
+		}	return new Constructor(this.date, this._settings);
 	};
 
 	// TEST FORM
@@ -426,22 +315,20 @@
 	//console.log(wednesday.getDay());
 
 	// Create a new Time() instance
-	let halloween = new Constructor('October 31, 2021');
+	let halloween = new Constructor('October 31, 2021', {instanceName: 'halloween'});
 	console.log('Initial halloween constructor: ', halloween);
 
 	// If the year on the Time() instance is greater than 2021, don't update
 	document.addEventListener('time:update', function (event) {
-		//console.log(event);
-		console.log('Instance date: ' + event.detail.instance.date);
-		if (event.detail.instance === halloween || event.detail.instance._history.includes(halloween)) {
-			console.log('Instance is halloween or in halloween&rsquo;s history.');
-			if (event.detail.time.date.getFullYear() > 2021) {
-				console.log('Year is greater than 2021. Canceled.');
-				event.preventDefault();
-			}
-		} else {
-			console.log('Instance is not halloween. Ignoring listener conditional and returning.');
+		console.log('Instance name: ' + event.detail.instance._settings.instanceName);
+		console.log('Is halloween:', event.detail.instance._settings.instanceName === 'halloween');
+
+		if ('halloween' === event.detail.instance._settings.instanceName && event.detail.time.date.getFullYear() > 2021) {
+			console.log('The instanceName is halloween and the year is greater than 2021. Canceled.');
+			event.preventDefault();
+			return;
 		}
+		console.log('Either the instanceName is not halloweeen or the year is less than or equal to 2021. Proceed.');
 	});
 
 	halloween.addDays(3).addMonths(1).addYears(1);

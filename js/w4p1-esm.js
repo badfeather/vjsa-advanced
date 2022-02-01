@@ -117,19 +117,17 @@ function copy (obj) {
  * @param {dateString, value, dateObject or array} date Optional parameter for date
  * If no date is passed, or the date parameter causes an invalid date, the current date will be used
  */
-function Constructor (date = [], options = {}, history = []) {
+function Constructor (date = [], options = {}) {
 	if (!Array.isArray(date)) {
 		date = [date];
 	}
 	let settings = Object.assign({
 		days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-		months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-	});
+		months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		instanceName: ''
+	}, options);
 	Object.freeze(settings);
 	let time = new Date(...date);
-	history = Array.isArray(history) && history.length ? history : [];
-	console.log(history);
-	Object.freeze(history);
 	Object.defineProperties(this, {
 		date: {
 			value: time
@@ -137,9 +135,6 @@ function Constructor (date = [], options = {}, history = []) {
 		_settings: {
 			value: settings
 		},
-		_history: {
-			value: history
-		}
 	});
 	emitEvent('time:ready', {
 		time: this
@@ -228,9 +223,7 @@ Constructor.prototype.addSeconds = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setSeconds(d.getSeconds() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'seconds',
@@ -239,7 +232,7 @@ Constructor.prototype.addSeconds = function (n) {
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -251,9 +244,7 @@ Constructor.prototype.addMinutes = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setMinutes(d.getMinutes() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'minutes',
@@ -262,7 +253,7 @@ Constructor.prototype.addMinutes = function (n) {
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -274,9 +265,7 @@ Constructor.prototype.addHours = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setHours(d.getHours() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'hours',
@@ -285,7 +274,7 @@ Constructor.prototype.addHours = function (n) {
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -297,9 +286,7 @@ Constructor.prototype.addDays = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setDate(d.getDate() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'days',
@@ -308,7 +295,7 @@ Constructor.prototype.addDays = function (n) {
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -320,9 +307,7 @@ Constructor.prototype.addMonths = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setMonth(d.getMonth() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'months',
@@ -331,7 +316,7 @@ Constructor.prototype.addMonths = function (n) {
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 /**
@@ -343,19 +328,16 @@ Constructor.prototype.addYears = function (n) {
 	if (isNaN(n)) throw 'Not a valid number.';
 	let d = new Date(this.date);
 	d.setFullYear(d.getFullYear() + n);
-	let history = copy(this._history);
-	history.push(this);
-	let time = new Constructor(d, this._settings, history);
+	let time = new Constructor(d, this._settings);
 	if (emitEvent('time:update', {
 		time,
 		type: 'years',
 		amount: n,
-		instance: this,
 		instance: this
 	})) {
 		return time;
 	};
-	return new Constructor(this.date, this._settings, this._history);
+	return new Constructor(this.date, this._settings);
 }
 
 export default Constructor;

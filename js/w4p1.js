@@ -71,22 +71,20 @@ form.addEventListener('submit', function(event) {
 //console.log(wednesday.getDay());
 
 // Create a new Time() instance
-let halloween = new Time('October 31, 2021');
+let halloween = new Time('October 31, 2021', {instanceName: 'halloween'});
 console.log('Initial halloween constructor: ', halloween);
 
 // If the year on the Time() instance is greater than 2021, don't update
 document.addEventListener('time:update', function (event) {
-	//console.log(event);
-	console.log('Instance date: ' + event.detail.instance.date);
-	if (event.detail.instance === halloween || event.detail.instance._history.includes(halloween)) {
-		console.log('Instance is halloween or in halloween&rsquo;s history.');
-		if (event.detail.time.date.getFullYear() > 2021) {
-			console.log('Year is greater than 2021. Canceled.');
-			event.preventDefault();
-		}
-	} else {
-		console.log('Instance is not halloween. Ignoring listener conditional and returning.');
+	console.log('Instance name: ' + event.detail.instance._settings.instanceName);
+	console.log('Is halloween:', event.detail.instance._settings.instanceName === 'halloween');
+
+	if ('halloween' === event.detail.instance._settings.instanceName && event.detail.time.date.getFullYear() > 2021) {
+		console.log('The instanceName is halloween and the year is greater than 2021. Canceled.');
+		event.preventDefault();
+		return;
 	}
+	console.log('Either the instanceName is not halloweeen or the year is less than or equal to 2021. Proceed.');
 });
 
 halloween.addDays(3).addMonths(1).addYears(1);
