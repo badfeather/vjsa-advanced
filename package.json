@@ -1,11 +1,8 @@
 {
   "name": "vjsa-advanced",
   "version": "1.0.0",
-  "description": "",
+  "description": "VJSA Advanced Academy Projects",
   "main": "index.html",
-  "scripts": {
-    "js": "rollup --config"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/badfeather/vjsa-advanced.git"
@@ -17,10 +14,16 @@
   },
   "homepage": "https://github.com/badfeather/vjsa-advanced#readme",
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "rollup": "^2.66.1",
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
     "prismjs": "^1.26.0"
+  },
+  "scripts": {
+    "js:w4p1": "rollup -c rollup.config.w4p1.js",
+    "js:w4p2": "rollup -c rollup.config.w4p2.js",
+    "js": "npm-run-all -p js:*"
   }
 }
