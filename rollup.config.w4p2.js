@@ -18,14 +18,16 @@ export default formats.map(function (format) {
 				file: `js/w4p2-bundle${format === 'iife' ? '' : `.${format}`}.js`,
 				format: format,
 				name: 'w4p2',
-				banner: banner
+				banner: banner,
+				exports: 'auto'
 			},
 			{
 				file: `js/w4p2-bundle${format === 'iife' ? '' : `.${format}`}.min.js`,
 				format: format,
 				name: 'w4p2',
 				banner: banner,
-				plugins: [terser()]
+				plugins: [terser()],
+				exports: 'auto'
 			}
 		]
 	};
