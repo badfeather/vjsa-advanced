@@ -3,11 +3,12 @@ import pkg from './package.json';
 
 let formats = ['iife', 'es', 'cjs'];
 let banner = `/*!
- * w4p2
- * ${pkg.name} v${pkg.version}
- * ${pkg.description}
- * Copyright ${new Date().getFullYear()}
- * ${pkg.license} license
+ * Project: w4p2
+ * Package: ${pkg.name}
+ * Version: ${pkg.version}
+ * Description: ${pkg.description}
+ * Copyright:  ${new Date().getFullYear()}
+ * License: ${pkg.license}
  */`;
 
 export default formats.map(function (format) {

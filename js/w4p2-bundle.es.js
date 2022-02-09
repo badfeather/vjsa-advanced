@@ -1,9 +1,10 @@
 /*!
- * w4p2
- * vjsa-advanced v1.0.0
- * VJSA Advanced Academy Projects
- * Copyright 2022
- * ISC license
+ * Project: w4p2
+ * Package: vjsa-advanced
+ * Version: 1.0.0
+ * Description: VJSA Advanced Academy Projects
+ * Copyright:  2022
+ * License: ISC
  */
 /**
  * Emit a custom event

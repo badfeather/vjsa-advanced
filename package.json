@@ -24,6 +24,7 @@
   "scripts": {
     "js:w4p1": "rollup -c rollup.config.w4p1.js",
     "js:w4p2": "rollup -c rollup.config.w4p2.js",
+    "js:w5p2": "rollup -c w5p2/rollup.config.w5p2.js",
     "js": "npm-run-all -p js:*"
   }
 }
