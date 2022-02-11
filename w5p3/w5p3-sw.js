@@ -6,7 +6,7 @@ self.addEventListener('install', function (event) {
 
 	// Cache the offline.html page
 	event.waitUntil(caches.open('app').then(function (cache) {
-		cache.add(new Request('w5p3/offline.html'));
+		cache.add(new Request('offline.html'));
 		return cache;
 	}));
 
@@ -40,7 +40,7 @@ self.addEventListener('fetch', function (event) {
 			fetch(request).then(function (response) {
 				return response;
 			}).catch(function (error) {
-				return caches.match('w5p3/offline.html');
+				return caches.match('offline.html');
 			})
 		);
 	}
