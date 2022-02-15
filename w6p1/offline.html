@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Offline | Places</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
+		<nav>
+			<a href="index.html">🧭 Places</a>
+		</nav>
+
+		<h1>Uh oh! You're offline.</h1>
+
+		<p>You'll be able to view your favorite places as soon as you're back online.</p>
+
+		<script>
+			if (navigator && navigator.serviceWorker) {
+				navigator.serviceWorker.register('sw.js');
+			}
+		</script>
+	</body>
+</html>
