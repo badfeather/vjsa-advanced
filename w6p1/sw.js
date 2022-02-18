@@ -47,7 +47,7 @@ self.addEventListener('fetch', function (event) {
 
 	// Images & Fonts
 	// Offline-first
-	if (request.headers.get('Accept').includes('image') || request.url.includes('noto-serif')) {
+	if (request.headers.get('Accept').includes('image') || request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript') || request.url.includes('noto-serif')) {
 		event.respondWith(
 			caches.match(request).then(function (response) {
 				return response || fetch(request).then(function (response) {
